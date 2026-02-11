@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronicle - Built by Operators, for Operators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Chronicle Brand - Refined */
+      --chronicle-sky: #D0EBFF;
+      --chronicle-azure: #74C0FC;
+      --chronicle-deep: #228BE6;
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --ink-muted: #64748B;
+      --paper: #FAFBFC;
+      --paper-warm: #F8FAFC;
+      --bone: #E2E8F0;
+      --white: #FFFFFF;
+      --success: #059669;
+
+      /* Typography */
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+
+      /* Spacing System */
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 80px;
+      --space-2xl: 120px;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* ============================================
+       HERO - Editorial Style
+    ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: linear-gradient(175deg, var(--white) 0%, var(--paper-warm) 50%, var(--chronicle-sky) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(116, 192, 252, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__nav {
+      padding: var(--space-md) 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero__nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 12px 24px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-cta:hover {
+      background: var(--chronicle-deep);
+      transform: translateY(-2px);
+    }
+
+    .hero__content {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      padding: var(--space-xl) 0 var(--space-2xl);
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 1000px) {
+      .hero__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-lg);
+      }
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--bone);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero__badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--chronicle-azure);
+      border-radius: 50%;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__subtitle {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 540px;
+    }
+
+    @media (max-width: 1000px) {
+      .hero__subtitle {
+        margin: 0 auto;
+      }
+    }
+
+    .hero__image {
+      position: relative;
+    }
+
+    .hero__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-xl);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 40px 80px -20px rgba(15, 23, 42, 0.25);
+    }
+
+    .hero__image::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border: 2px solid var(--chronicle-sky);
+      border-radius: calc(var(--radius-xl) + 8px);
+      z-index: -1;
+    }
+
+    /* ============================================
+       WHY SECTION - Clean Editorial
+    ============================================ */
+    .why {
+      padding: var(--space-2xl) 0;
+      background: var(--white);
+    }
+
+    .why__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .why__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--chronicle-deep);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.01em;
+    }
+
+    .why__text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-md);
+    }
+
+    .why__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quote-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .quote-card {
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border-left: 3px solid var(--chronicle-azure);
+      position: relative;
+    }
+
+    .quote-card::before {
+      content: '"';
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--chronicle-sky);
+      line-height: 1;
+      opacity: 0.5;
+    }
+
+    .quote-card__text {
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+      padding-left: var(--space-lg);
+    }
+
+    .quote-card__author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      margin-top: var(--space-sm);
+      padding-left: var(--space-lg);
+    }
+
+    /* ============================================
+       WHAT WE BUILT - Platform Section
+    ============================================ */
+    .platform {
+      padding: var(--space-2xl) 0;
+      background: var(--paper);
+    }
+
+    .platform__header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .platform__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .platform__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px -20px rgba(15, 23, 42, 0.2);
+    }
+
+    .platform__features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 800px) {
+      .platform__features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border: 1px solid var(--bone);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--chronicle-azure);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px -12px rgba(34, 139, 230, 0.15);
+    }
+
+    .feature-card__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--chronicle-sky);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-card__icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--chronicle-deep);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-card__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .feature-card__desc {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       IMPACT - Platform Stats (Clean Version)
+    ============================================ */
+    .impact {
+      padding: var(--space-2xl) 0;
+      background: var(--ink);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .impact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(116, 192, 252, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(208, 235, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .impact__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      position: relative;
+      z-index: 1;
+    }
+
+    .impact .section-label {
+      color: var(--chronicle-azure);
+    }
+
+    .impact .section-title {
+      color: var(--white);
+    }
+
+    .impact__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 800px) {
+      .impact__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+    }
+
+    .impact-stat {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .impact-stat:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--chronicle-azure);
+      transform: translateY(-6px);
+    }
+
+    .impact-stat__number {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: var(--chronicle-azure);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .impact-stat__label {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ============================================
+       LEADERSHIP - Minimal
+    ============================================ */
+    .leadership {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .leadership__content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .leadership__title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+    }
+
+    .leadership__subtitle {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       HOW WE WORK
+    ============================================ */
+    .approach {
+      padding: var(--space-2xl) 0;
+      background: var(--paper);
+    }
+
+    .approach__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .approach__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .approach__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px -20px rgba(15, 23, 42, 0.15);
+    }
+
+    .approach__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 800px) {
+      .approach__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .approach-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      text-align: center;
+      border: 1px solid var(--bone);
+      transition: all 0.3s ease;
+    }
+
+    .approach-card:hover {
+      border-color: var(--chronicle-azure);
+      box-shadow: 0 12px 40px -12px rgba(34, 139, 230, 0.12);
+    }
+
+    .approach-card__icon {
+      width: 64px;
+      height: 64px;
+      background: var(--chronicle-sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+    }
+
+    .approach-card__icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--chronicle-deep);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .approach-card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .approach-card__desc {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       FAQ
+    ============================================ */
+    .faq {
+      padding: var(--space-2xl) 0;
+      background: var(--white);
+    }
+
+    .faq__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--bone);
+      padding: var(--space-md) 0;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--bone);
+    }
+
+    .faq-item__question {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+
+    .faq-item__question::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--chronicle-azure);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.4em;
+    }
+
+    .faq-item__answer {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      padding-left: calc(8px + var(--space-sm));
+    }
+
+    /* ============================================
+       CTA
+    ============================================ */
+    .cta {
+      padding: var(--space-2xl) 0;
+      background: linear-gradient(135deg, var(--ink) 0%, #1E3A5F 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(116, 192, 252, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta__subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: var(--space-lg);
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 18px 36px;
+      background: var(--chronicle-sky);
+      color: var(--ink);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta__button:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(208, 235, 255, 0.4);
+    }
+
+    .cta__button svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .cta__badges {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .cta__badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .cta__badge svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--chronicle-azure);
+      stroke-width: 2;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <nav class="hero__nav">
+      <div class="container">
+        <div class="hero__nav-inner">
+          <a href="/" class="logo">Chronicle</a>
+          <a href="#demo" class="nav-cta">Book a Demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__text">
+          <span class="hero__badge">Founded 2023</span>
+          <h1 class="hero__title">Built by Operators, for Operators</h1>
+          <p class="hero__subtitle">Chronicle was founded in 2023 to solve a problem we saw firsthand: disability law firms drowning in manual ERE work while trying to help clients who actually need them.</p>
+        </div>
+        <div class="hero__image">
+          <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851145/chronicle-content/about-refactor/hero-v1.png" alt="From manual ERE chaos to Chronicle's organized dashboard" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHRONICLE EXISTS -->
+  <section class="why">
+    <div class="container">
+      <div class="why__grid">
+        <div class="why__text">
+          <span class="section-label">The Problem</span>
+          <h2 class="section-title">Why Chronicle Exists</h2>
+          <p>Before Chronicle, disability law firms spent hours every day doing the same thing: logging into the SSA's ERE portal, checking for updates case by case, passing two-factor authentication codes between team members, getting kicked out mid-session, and starting over.</p>
+          <p>That time wasn't going to clients. It was going to the SSA's outdated systems.</p>
+          <p><strong>We built Chronicle to give that time back.</strong></p>
+        </div>
+        <div class="quote-stack">
+          <div class="quote-card">
+            <p class="quote-card__text">Before Chronicle, we were constantly passing two-factor codes back and forth, getting kicked out of ERE, and struggling to keep track of updates.</p>
+            <p class="quote-card__author">Firm Owner</p>
+          </div>
+          <div class="quote-card">
+            <p class="quote-card__text">The first thing I would do when I wake up in the morning is download [the ERE sheet]. Before I go to sleep, I download. It was horrible.</p>
+            <p class="quote-card__author">Firm Owner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILT -->
+  <section class="platform">
+    <div class="container">
+      <div class="platform__header">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">What We Built</h2>
+        <p style="font-size: 1.1rem; color: var(--ink-soft); line-height: 1.7; margin-top: var(--space-sm);">Chronicle is an ERE monitoring platform built specifically for Social Security disability firms. It checks the SSA's ERE and e-file daily for every monitored case, surfacing status changes, new documents, and upcoming deadlines.</p>
+      </div>
+
+      <div class="platform__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851146/chronicle-content/about-refactor/section-what-we-built-v1.png" alt="Chronicle as the bridge between SSA and firm systems">
+      </div>
+
+      <div class="platform__features">
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Daily ERE Monitoring</h3>
+          <p class="feature-card__desc">Checks every monitored case daily for status changes, new documents, and upcoming deadlines.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"/>
+              <path d="M9 15l6-6m0 0h-4m4 0v4"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">CMS Integration</h3>
+          <p class="feature-card__desc">Works with Clio, Filevine, MyCase, Zapier, and full API access for custom workflows.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">SSD-Specific Infrastructure</h3>
+          <p class="feature-card__desc">Built from the ground up for disability law workflows, not adapted from generic legal software.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT - PLATFORM STATS -->
+  <section class="impact">
+    <div class="container">
+      <div class="impact__header">
+        <span class="section-label">Our Impact</span>
+        <h2 class="section-title">Chronicle by the Numbers</h2>
+      </div>
+
+      <div class="impact__grid">
+        <div class="impact-stat">
+          <div class="impact-stat__number">1,000+</div>
+          <div class="impact-stat__label">SSD professionals using Chronicle</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-stat__number">107,000+</div>
+          <div class="impact-stat__label">Cases under active monitoring</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-stat__number">1.5M+</div>
+          <div class="impact-stat__label">Documents processed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership">
+    <div class="container">
+      <div class="leadership__content">
+        <span class="section-label">Leadership</span>
+        <h2 class="leadership__title">Nikhil Pai, Founder</h2>
+        <p class="leadership__subtitle">Chronicle was founded with a simple premise: build tools that SSD practitioners would build for themselves if they had the engineering resources.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="approach">
+    <div class="container">
+      <div class="approach__header">
+        <span class="section-label">Our Approach</span>
+        <h2 class="section-title">How We Work</h2>
+      </div>
+
+      <div class="approach__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851147/chronicle-content/about-refactor/section-how-we-work-v1.png" alt="Chronicle's approach: Listen, Build for SSD, Iterate">
+      </div>
+
+      <div class="approach__grid">
+        <div class="approach-card">
+          <div class="approach-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z"/>
+              <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+            </svg>
+          </div>
+          <h3 class="approach-card__title">We Listen First</h3>
+          <p class="approach-card__desc">"Nikhil wanted to listen. He didn't just want to sell me something. He really wants to make our work better."</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/>
+            </svg>
+          </div>
+          <h3 class="approach-card__title">Build for SSD Specifically</h3>
+          <p class="approach-card__desc">Built from the ground up for SSD workflows, not a generic legal tool adapted for disability law.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 12a9 9 0 11-9-9"/>
+              <path d="M21 3v6h-6"/>
+            </svg>
+          </div>
+          <h3 class="approach-card__title">Iterate on Real Workflows</h3>
+          <p class="approach-card__desc">Features come from actual operational needs, not theoretical use cases. Firms using Chronicle shape what we build next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq__header">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq-item">
+          <h3 class="faq-item__question">Is Chronicle a case management system?</h3>
+          <p class="faq-item__answer">No. Chronicle is an ERE monitoring platform. It monitors SSA activity and routes that information to your existing workflow, but it doesn't replace your CMS. Your CMS manages tasks and firm execution; Chronicle ensures those systems stay aligned with what the SSA is actually doing.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">What CMS platforms does Chronicle work with?</h3>
+          <p class="faq-item__answer">Chronicle integrates with Clio, Filevine, MyCase, and offers Zapier connectivity for other platforms. It also provides a full API for firms with custom integration needs. Chronicle is CMS-agnostic and works with any CMS that has an API, or no CMS at all.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">How is Chronicle different from Assure/Atlasware?</h3>
+          <p class="faq-item__answer">Both help SSD firms work with the ERE. The difference is workflow stage coverage. Assure is primarily optimized for hearing prep; Chronicle supports the full SSD lifecycle (initial, reconsideration, hearing, and post-hearing) with daily monitoring throughout.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">Is Chronicle SOC 2 certified?</h3>
+          <p class="faq-item__answer">Yes. Chronicle is SOC 2 certified and uses encryption for data at rest and in transit. Your firm's data is audit-ready at all times.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__question">How long has Chronicle been serving SSD firms?</h3>
+          <p class="faq-item__answer">Chronicle was founded in 2023 and now serves over 1,000 SSD professionals managing more than 107,000 cases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="demo">
+    <div class="container">
+      <div class="cta__content">
+        <h2 class="cta__title">See How Chronicle Works for Your Firm</h2>
+        <p class="cta__subtitle">Join 1,000+ SSD professionals managing 107,000+ cases with Chronicle.</p>
+
+        <a href="#" class="cta__button">
+          Book a Demo
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <div class="cta__badges">
+          <div class="cta__badge">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            SOC 2 Certified
+          </div>
+          <div class="cta__badge">
+            <svg viewBox="0 0 24 24">
+              <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+            4.9/5 from 100+ firms
+          </div>
+          <div class="cta__badge">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            1,000+ professionals
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

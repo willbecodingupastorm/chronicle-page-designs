@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronicle vs Atlasware | Which SSD Tool Fits Your Workflow?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Chronicle Brand */
+      --chronicle-sky: #D0EBFF;
+      --chronicle-azure: #74C0FC;
+      --chronicle-deep: #228BE6;
+
+      /* Neutral Palette */
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --ink-muted: #64748B;
+      --paper: #F8FAFC;
+      --bone: #E2E8F0;
+      --white: #FFFFFF;
+
+      /* Semantic */
+      --success: #059669;
+      --success-light: #D1FAE5;
+      --amber: #D97706;
+      --amber-light: #FEF3C7;
+      --competitor: #9CA3AF;
+
+      /* Typography */
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Manrope', system-ui, sans-serif;
+
+      /* Spacing */
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 80px;
+      --space-2xl: 120px;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* ============================================
+       HERO - Comparison Focus
+    ============================================ */
+    .hero {
+      padding: var(--space-xl) 0 var(--space-lg);
+      background: linear-gradient(180deg, var(--paper) 0%, var(--white) 100%);
+      text-align: center;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 10px 20px;
+      background: var(--white);
+      border: 1px solid var(--bone);
+      border-radius: 100px;
+      margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero__badge-item {
+      color: var(--ink);
+    }
+
+    .hero__badge-vs {
+      color: var(--ink-muted);
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__subtitle {
+      font-size: 1.2rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin: 0 auto var(--space-md);
+      line-height: 1.7;
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 14px 28px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .hero__cta:hover {
+      background: var(--chronicle-deep);
+      transform: translateY(-2px);
+    }
+
+    .hero__cta svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* ============================================
+       COMPARISON TABLE
+    ============================================ */
+    .comparison {
+      padding: var(--space-lg) 0 var(--space-xl);
+      background: var(--white);
+    }
+
+    .comparison__table-wrap {
+      background: var(--white);
+      border: 1px solid var(--bone);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .comparison__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison__table thead {
+      background: var(--paper);
+    }
+
+    .comparison__table th {
+      padding: 20px 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: left;
+      border-bottom: 1px solid var(--bone);
+      letter-spacing: 0.02em;
+    }
+
+    .comparison__table th:first-child {
+      width: 35%;
+    }
+
+    .comparison__table th:nth-child(2),
+    .comparison__table th:nth-child(3) {
+      text-align: center;
+      width: 32.5%;
+    }
+
+    .comparison__table th.chronicle-header {
+      background: var(--chronicle-sky);
+      color: var(--ink);
+    }
+
+    .comparison__table td {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--bone);
+      vertical-align: middle;
+    }
+
+    .comparison__table td:nth-child(2),
+    .comparison__table td:nth-child(3) {
+      text-align: center;
+    }
+
+    .comparison__table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison__table tbody tr:hover {
+      background: rgba(248, 250, 252, 0.5);
+    }
+
+    .feature-name {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .cell-value {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      max-width: 180px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .icon-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--success);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 14px;
+    }
+
+    .icon-partial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--amber);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .icon-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--bone);
+      color: var(--ink-muted);
+      border-radius: 50%;
+      font-size: 16px;
+    }
+
+    /* ============================================
+       RESULTS TILES
+    ============================================ */
+    .results {
+      padding: var(--space-xl) 0;
+      background: var(--paper);
+    }
+
+    .results__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (max-width: 800px) {
+      .results__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .result-tile {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+      border: 1px solid var(--bone);
+      transition: all 0.3s ease;
+    }
+
+    .result-tile:hover {
+      border-color: var(--chronicle-azure);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(34, 139, 230, 0.12);
+    }
+
+    .result-tile__number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .result-tile__label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .result-tile__source {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .social-proof__item {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .social-proof__item strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       LIFECYCLE COVERAGE
+    ============================================ */
+    .lifecycle {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--chronicle-deep);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .lifecycle__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .lifecycle__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.12);
+    }
+
+    .lifecycle__comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      max-width: 900px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    @media (max-width: 700px) {
+      .lifecycle__comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .coverage-card {
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border: 2px solid var(--bone);
+    }
+
+    .coverage-card--chronicle {
+      border-color: var(--chronicle-azure);
+      background: rgba(208, 235, 255, 0.15);
+    }
+
+    .coverage-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-sm);
+    }
+
+    .coverage-card__name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .coverage-card__tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--bone);
+      color: var(--ink-muted);
+    }
+
+    .coverage-card--chronicle .coverage-card__tag {
+      background: var(--chronicle-sky);
+      color: var(--chronicle-deep);
+    }
+
+    .coverage-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .coverage-bar__segment {
+      flex: 1;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--bone);
+    }
+
+    .coverage-bar__segment--active {
+      background: var(--chronicle-azure);
+    }
+
+    .coverage-bar__segment--partial {
+      background: var(--amber);
+    }
+
+    .coverage-card__desc {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .testimonial-banner {
+      background: var(--chronicle-sky);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-banner__text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: var(--space-sm);
+    }
+
+    .testimonial-banner__author {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    /* ============================================
+       DECISION HELPER
+    ============================================ */
+    .decision {
+      padding: var(--space-xl) 0;
+      background: var(--paper);
+    }
+
+    .decision__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+      .decision__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .decision-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border-top: 4px solid var(--bone);
+    }
+
+    .decision-card--atlasware {
+      border-top-color: var(--competitor);
+    }
+
+    .decision-card--chronicle {
+      border-top-color: var(--chronicle-azure);
+    }
+
+    .decision-card--both {
+      border-top-color: var(--success);
+    }
+
+    .decision-card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+    }
+
+    .decision-list {
+      list-style: none;
+    }
+
+    .decision-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-sm);
+      line-height: 1.5;
+    }
+
+    .decision-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--chronicle-azure);
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .decision-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ============================================
+       HOW TO SWITCH
+    ============================================ */
+    .switch {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .switch__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .switch__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.1);
+    }
+
+    .switch__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+      .switch__steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .switch__steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step__number {
+      width: 48px;
+      height: 48px;
+      background: var(--chronicle-sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--chronicle-deep);
+      margin: 0 auto var(--space-sm);
+    }
+
+    .step__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step__desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       SECURITY
+    ============================================ */
+    .security {
+      padding: var(--space-lg) 0;
+      background: var(--paper);
+    }
+
+    .security__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .security__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .security__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--bone);
+    }
+
+    .security__icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--chronicle-deep);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .security__text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ============================================
+       FAQ
+    ============================================ */
+    .faq {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--bone);
+      padding: var(--space-md) 0;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--bone);
+    }
+
+    .faq-item__q {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .faq-item__q::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--chronicle-azure);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .faq-item__a {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      padding-left: calc(8px + var(--space-sm));
+    }
+
+    /* ============================================
+       CTA
+    ============================================ */
+    .cta {
+      padding: var(--space-xl) 0;
+      background: var(--ink);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 120%, rgba(116, 192, 252, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta__subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: var(--space-md);
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 16px 32px;
+      background: var(--chronicle-sky);
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .cta__button:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(208, 235, 255, 0.4);
+    }
+
+    .cta__button svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .cta__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .cta__link {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .cta__link:hover {
+      color: var(--chronicle-azure);
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__badge">
+        <span class="hero__badge-item">Chronicle</span>
+        <span class="hero__badge-vs">vs</span>
+        <span class="hero__badge-item">Atlasware</span>
+      </div>
+      <h1 class="hero__title">Which SSD Tool Fits Your Workflow?</h1>
+      <p class="hero__subtitle">Atlasware excels at hearing prep. Chronicle monitors the full SSD lifecycle. Here's how they compare.</p>
+      <a href="#demo" class="hero__cta">
+        Book a Demo
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison">
+    <div class="container">
+      <div class="comparison__table-wrap">
+        <table class="comparison__table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Atlasware</th>
+              <th class="chronicle-header">Chronicle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="feature-name">ERE Monitoring</div>
+                <div class="feature-desc">How often cases are checked</div>
+              </td>
+              <td><span class="cell-value">Scheduled pulls (pre-hearing)</span></td>
+              <td><span class="cell-value">Daily automated checks</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Exhibit Packets</div>
+                <div class="feature-desc">Document preparation for hearings</div>
+              </td>
+              <td><span class="icon-check">&#10003;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Medical Chronology</div>
+                <div class="feature-desc">AI-assisted record analysis</div>
+              </td>
+              <td><span class="cell-value">AI summaries</span></td>
+              <td><span class="cell-value">AI timeline with citations</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Hearing Briefs</div>
+                <div class="feature-desc">Brief writing tools</div>
+              </td>
+              <td><span class="cell-value">Brief Tool Pro</span></td>
+              <td><span class="cell-value">AC Brief add-on</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">CMS Integrations</div>
+                <div class="feature-desc">Supported platforms</div>
+              </td>
+              <td><span class="cell-value">Prevail, Litify only</span></td>
+              <td><span class="cell-value">Clio, Filevine, MyCase, Zapier</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">API Automation</div>
+                <div class="feature-desc">Custom workflow access</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Lifecycle Coverage</div>
+                <div class="feature-desc">Stages monitored</div>
+              </td>
+              <td><span class="cell-value">Hearing-prep focused</span></td>
+              <td><span class="cell-value">Initial through post-hearing</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__grid">
+        <div class="result-tile">
+          <div class="result-tile__number">3x</div>
+          <div class="result-tile__label">Caseload Growth</div>
+          <div class="result-tile__source">The Disability Champions (900 to 3,000)</div>
+        </div>
+        <div class="result-tile">
+          <div class="result-tile__number">75%</div>
+          <div class="result-tile__label">Less Admin Work</div>
+          <div class="result-tile__source">The Disability Champions</div>
+        </div>
+        <div class="result-tile">
+          <div class="result-tile__number">-1</div>
+          <div class="result-tile__label">Avoided 3rd Paralegal</div>
+          <div class="result-tile__source">Law Office of Nancy L. Cavey</div>
+        </div>
+      </div>
+      <div class="social-proof">
+        <div class="social-proof__item"><strong>4.9/5</strong> from 100+ firms</div>
+        <div class="social-proof__item"><strong>1,000+</strong> professionals</div>
+        <div class="social-proof__item"><strong>107K+</strong> cases</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFECYCLE COVERAGE -->
+  <section class="lifecycle">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Coverage Comparison</span>
+        <h2 class="section-title">Before & After: Lifecycle Coverage</h2>
+        <p class="section-subtitle">See where each tool provides visibility across the SSD case lifecycle.</p>
+      </div>
+
+      <div class="lifecycle__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851150/chronicle-content/comparison-atlasware-refactor/section-lifecycle-coverage-v1.png" alt="SSD lifecycle timeline showing Atlasware limited coverage vs Chronicle full coverage">
+      </div>
+
+      <div class="lifecycle__comparison">
+        <div class="coverage-card">
+          <div class="coverage-card__header">
+            <span class="coverage-card__name">Atlasware</span>
+            <span class="coverage-card__tag">Hearing-prep focused</span>
+          </div>
+          <div class="coverage-bar">
+            <div class="coverage-bar__segment"></div>
+            <div class="coverage-bar__segment"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--partial"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--partial"></div>
+            <div class="coverage-bar__segment"></div>
+          </div>
+          <p class="coverage-card__desc">Strong at hearing prep stage: exhibit packets, brief tools, scheduled document pulls in the weeks before hearings. Limited visibility at other stages.</p>
+        </div>
+
+        <div class="coverage-card coverage-card--chronicle">
+          <div class="coverage-card__header">
+            <span class="coverage-card__name">Chronicle</span>
+            <span class="coverage-card__tag">Full lifecycle</span>
+          </div>
+          <div class="coverage-bar">
+            <div class="coverage-bar__segment coverage-bar__segment--active"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--active"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--active"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--active"></div>
+            <div class="coverage-bar__segment coverage-bar__segment--active"></div>
+          </div>
+          <p class="coverage-card__desc">Full lifecycle monitoring: initial application through post-hearing. Daily checks at every stage. No gaps between hearing prep windows.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-banner">
+        <p class="testimonial-banner__text">"I was sold immediately. I had been a person who had been from Atlasware to Assure for as long as it existed. It was not a hard decision to make. The product was just superior."</p>
+        <p class="testimonial-banner__author">Michele Marois, Anderson Marois & Associates</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISION HELPER -->
+  <section class="decision">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Decision Helper</span>
+        <h2 class="section-title">Who Should Choose Which</h2>
+      </div>
+
+      <div class="decision__grid">
+        <div class="decision-card decision-card--atlasware">
+          <h3 class="decision-card__title">Choose Atlasware If:</h3>
+          <ul class="decision-list">
+            <li>Primary need is hearing prep and exhibit packets</li>
+            <li>You use Prevail as your CMS (native integration)</li>
+            <li>Brief Tool Pro is central to your workflow</li>
+            <li>You're satisfied with scheduled pre-hearing monitoring</li>
+          </ul>
+        </div>
+
+        <div class="decision-card decision-card--chronicle">
+          <h3 class="decision-card__title">Choose Chronicle If:</h3>
+          <ul class="decision-list">
+            <li>You need full lifecycle monitoring (not just hearing prep)</li>
+            <li>You use Clio, Filevine, or MyCase</li>
+            <li>You want daily ERE visibility across all case stages</li>
+            <li>You need API access or Zapier automation</li>
+          </ul>
+        </div>
+
+        <div class="decision-card decision-card--both">
+          <h3 class="decision-card__title">Use Both Together:</h3>
+          <ul class="decision-list">
+            <li>Atlasware for hearing prep workflows</li>
+            <li>Chronicle for daily lifecycle monitoring</li>
+            <li>Not either/or; tools complement each other</li>
+            <li>Many firms run both simultaneously</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO SWITCH -->
+  <section class="switch">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Getting Started</span>
+        <h2 class="section-title">How to Switch from Atlasware to Chronicle</h2>
+        <p class="section-subtitle">Switching doesn't require abandoning your current workflow overnight.</p>
+      </div>
+
+      <div class="switch__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851153/chronicle-content/comparison-atlasware-refactor/section-how-to-switch-v1.png" alt="Four-step migration process: connect, import, parallel, transition">
+      </div>
+
+      <div class="switch__steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h4 class="step__title">Connect ERE Credentials</h4>
+          <p class="step__desc">Chronicle securely connects to the SSA's ARS system using your firm's existing representative credentials.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h4 class="step__title">Import Your Caseload</h4>
+          <p class="step__desc">Upload active cases via CSV or connect your CMS. Chronicle begins daily monitoring immediately.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h4 class="step__title">Run Both in Parallel</h4>
+          <p class="step__desc">Use Atlasware for hearing prep while Chronicle handles daily lifecycle monitoring. Phase out when ready.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">4</div>
+          <h4 class="step__title">Full Transition</h4>
+          <p class="step__desc">Most firms consolidate to Chronicle for daily operations. Average onboarding: under one week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security">
+    <div class="container">
+      <div class="security__grid">
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <span class="security__text">SOC 2 Type II Certified</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <span class="security__text">Encryption at Rest & Transit</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <span class="security__text">Role-Based Access Controls</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <span class="security__text">Independent of Assure Ecosystem</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq-item">
+          <h3 class="faq-item__q">Can I use Chronicle and Atlasware together?</h3>
+          <p class="faq-item__a">Yes. Some firms use Atlasware for hearing prep and Chronicle for daily lifecycle monitoring. The tools complement each other.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">What if I use Prevail?</h3>
+          <p class="faq-item__a">Atlasware integrates natively with Prevail. But if you need daily monitoring or full lifecycle coverage, Chronicle adds capabilities Atlasware doesn't have, even for Prevail users.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">How is daily monitoring different from scheduled pulls?</h3>
+          <p class="faq-item__a">Scheduled pulls check the ERE at set intervals before hearings. Daily monitoring checks every case, every day. Continuous visibility vs point-in-time snapshots.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">Does Chronicle have brief writing tools?</h3>
+          <p class="faq-item__a">Chronicle offers an AC Brief add-on. For structured hearing briefs like Brief Tool Pro, Atlasware remains strong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="demo">
+    <div class="container">
+      <div class="cta__content">
+        <h2 class="cta__title">See Chronicle in Action</h2>
+        <p class="cta__subtitle">Compare for yourself how daily monitoring changes your workflow.</p>
+        <a href="#" class="cta__button">
+          Book a Demo
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="cta__links">
+          <a href="#" class="cta__link">Assure Disability vs. Chronicle</a>
+          <a href="#" class="cta__link">Alternatives to Assure Disability</a>
+          <a href="#" class="cta__link">Switch from Atlasware to Chronicle</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

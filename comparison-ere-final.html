@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronicle vs Manual ERE Access | Why Firms Are Switching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Chronicle Brand */
+      --chronicle-sky: #D0EBFF;
+      --chronicle-azure: #74C0FC;
+      --chronicle-deep: #228BE6;
+
+      /* Neutral Palette */
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --ink-muted: #64748B;
+      --paper: #F8FAFC;
+      --bone: #E2E8F0;
+      --white: #FFFFFF;
+
+      /* Semantic Colors */
+      --success: #059669;
+      --success-soft: #D1FAE5;
+      --danger: #DC2626;
+      --danger-soft: #FEE2E2;
+
+      /* Typography */
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+
+      /* Spacing */
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 80px;
+      --space-2xl: 120px;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* ============================================
+       HERO - Transformation Narrative
+    ============================================ */
+    .hero {
+      padding: var(--space-xl) 0;
+      background: linear-gradient(180deg, var(--white) 0%, var(--paper) 100%);
+      text-align: center;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 8px 16px;
+      background: var(--chronicle-sky);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--chronicle-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.01em;
+    }
+
+    .hero__subtitle {
+      font-size: 1.25rem;
+      color: var(--ink-soft);
+      max-width: 650px;
+      margin: 0 auto var(--space-md);
+      line-height: 1.7;
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 16px 32px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .hero__cta:hover {
+      background: var(--chronicle-deep);
+      transform: translateY(-2px);
+    }
+
+    .hero__cta svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* ============================================
+       COMPARISON TABLE
+    ============================================ */
+    .comparison {
+      padding: var(--space-lg) 0 var(--space-xl);
+      background: var(--paper);
+    }
+
+    .comparison__wrapper {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .comparison__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison__table thead {
+      background: var(--paper);
+    }
+
+    .comparison__table th {
+      padding: 20px 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: left;
+      border-bottom: 1px solid var(--bone);
+    }
+
+    .comparison__table th:first-child {
+      width: 35%;
+    }
+
+    .comparison__table th:nth-child(2),
+    .comparison__table th:nth-child(3) {
+      text-align: center;
+      width: 32.5%;
+    }
+
+    .comparison__table th.manual-header {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .comparison__table th.chronicle-header {
+      background: var(--chronicle-sky);
+      color: var(--chronicle-deep);
+    }
+
+    .comparison__table td {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--bone);
+      vertical-align: middle;
+    }
+
+    .comparison__table td:nth-child(2),
+    .comparison__table td:nth-child(3) {
+      text-align: center;
+    }
+
+    .comparison__table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison__table tbody tr:hover {
+      background: rgba(248, 250, 252, 0.5);
+    }
+
+    .feature-name {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    .cell-text {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      max-width: 180px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .cell-text--negative {
+      color: var(--danger);
+    }
+
+    .cell-text--positive {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .icon-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--success);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 14px;
+    }
+
+    .icon-limited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .icon-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--bone);
+      color: var(--ink-muted);
+      border-radius: 50%;
+      font-size: 16px;
+    }
+
+    /* ============================================
+       RESULTS
+    ============================================ */
+    .results {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .results__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (max-width: 800px) {
+      .results__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, var(--chronicle-sky) 0%, rgba(208, 235, 255, 0.3) 100%);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+      border: 1px solid var(--chronicle-azure);
+    }
+
+    .result-card__number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .result-card__label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .result-card__source {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .social-proof__item {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .social-proof__item strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       BEFORE/AFTER
+    ============================================ */
+    .before-after {
+      padding: var(--space-xl) 0;
+      background: var(--paper);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--chronicle-deep);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .before-after__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .before-after__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.12);
+    }
+
+    .before-after__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      max-width: 1000px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    @media (max-width: 800px) {
+      .before-after__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .state-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border: 2px solid var(--bone);
+    }
+
+    .state-card--before {
+      border-color: var(--danger-soft);
+    }
+
+    .state-card--after {
+      border-color: var(--success-soft);
+    }
+
+    .state-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .state-card__badge {
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .state-card--before .state-card__badge {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .state-card--after .state-card__badge {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .state-card__title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .state-list {
+      list-style: none;
+      margin-bottom: var(--space-md);
+    }
+
+    .state-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-sm);
+      line-height: 1.5;
+    }
+
+    .state-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .state-card--before .state-list li::before {
+      background: var(--danger);
+    }
+
+    .state-card--after .state-list li::before {
+      background: var(--success);
+    }
+
+    .state-quote {
+      background: var(--paper);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm);
+      border-left: 3px solid;
+    }
+
+    .state-card--before .state-quote {
+      border-left-color: var(--danger);
+    }
+
+    .state-card--after .state-quote {
+      border-left-color: var(--success);
+    }
+
+    .state-quote__text {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: var(--space-xs);
+    }
+
+    .state-quote__author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    /* ============================================
+       THE PROBLEM
+    ============================================ */
+    .problem {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .problem__content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .problem__text {
+      font-size: 1.15rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .problem__pain-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    @media (max-width: 700px) {
+      .problem__pain-points {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pain-point {
+      background: var(--danger-soft);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm);
+      text-align: center;
+    }
+
+    .pain-point__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .pain-point__title {
+      font-weight: 700;
+      color: var(--danger);
+      margin-bottom: 4px;
+    }
+
+    .pain-point__desc {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .problem__quote {
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border-left: 4px solid var(--chronicle-azure);
+    }
+
+    .problem__quote-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: var(--space-sm);
+    }
+
+    .problem__quote-author {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    /* ============================================
+       HOW IT WORKS
+    ============================================ */
+    .how-it-works {
+      padding: var(--space-xl) 0;
+      background: var(--paper);
+    }
+
+    .how-it-works__content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .how-it-works__text {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .monitoring-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    @media (max-width: 600px) {
+      .monitoring-features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .monitoring-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm);
+      border: 1px solid var(--bone);
+    }
+
+    .monitoring-feature__icon {
+      width: 36px;
+      height: 36px;
+      background: var(--chronicle-sky);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .monitoring-feature__icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--chronicle-deep);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .monitoring-feature__text {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .monitoring-feature__text strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    /* ============================================
+       HOW TO SWITCH
+    ============================================ */
+    .switch {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .switch__image {
+      max-width: 900px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .switch__image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.1);
+    }
+
+    .switch__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 700px) {
+      .switch__steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step {
+      text-align: center;
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .step__number {
+      width: 48px;
+      height: 48px;
+      background: var(--chronicle-sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--chronicle-deep);
+      margin: 0 auto var(--space-sm);
+    }
+
+    .step__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step__desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    .switch__note {
+      text-align: center;
+      max-width: 600px;
+      margin: var(--space-md) auto 0;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      background: var(--chronicle-sky);
+      padding: var(--space-sm);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ============================================
+       SECURITY
+    ============================================ */
+    .security {
+      padding: var(--space-lg) 0;
+      background: var(--paper);
+    }
+
+    .security__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .security__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .security__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--bone);
+    }
+
+    .security__icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--chronicle-deep);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .security__text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ============================================
+       FAQ
+    ============================================ */
+    .faq {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--bone);
+      padding: var(--space-md) 0;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--bone);
+    }
+
+    .faq-item__q {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .faq-item__q::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--chronicle-azure);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .faq-item__a {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      padding-left: calc(8px + var(--space-sm));
+    }
+
+    /* ============================================
+       CTA
+    ============================================ */
+    .cta {
+      padding: var(--space-xl) 0;
+      background: linear-gradient(135deg, var(--ink) 0%, #1E293B 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(116, 192, 252, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta__subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: var(--space-md);
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 16px 32px;
+      background: var(--chronicle-sky);
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .cta__button:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(208, 235, 255, 0.4);
+    }
+
+    .cta__button svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .cta__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .cta__link {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .cta__link:hover {
+      color: var(--chronicle-azure);
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero__badge">Automation vs Manual</span>
+      <h1 class="hero__title">Chronicle vs Manual ERE Access: Why Firms Are Switching</h1>
+      <p class="hero__subtitle">Daily document checks. Real-time status updates. Zero portal logins for your team.</p>
+      <a href="#demo" class="hero__cta">
+        Book a Demo
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison">
+    <div class="container">
+      <div class="comparison__wrapper">
+        <table class="comparison__table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th class="manual-header">Manual ERE Access</th>
+              <th class="chronicle-header">Chronicle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="feature-name">Document Access</div>
+                <div class="feature-desc">How documents are retrieved</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">Yes, per login</span></td>
+              <td><span class="cell-text cell-text--positive">Automatic daily pulls</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Status Reports</div>
+                <div class="feature-desc">Case status visibility</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">Manual download each time</span></td>
+              <td><span class="cell-text cell-text--positive">Real-time dashboard with alerts</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Team Access</div>
+                <div class="feature-desc">Multi-user capability</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">Single credential (2FA friction)</span></td>
+              <td><span class="cell-text cell-text--positive">Role-based access for whole team</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Monitoring Frequency</div>
+                <div class="feature-desc">How often cases are checked</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">When someone remembers</span></td>
+              <td><span class="cell-text cell-text--positive">Automated daily checks</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Deadline Awareness</div>
+                <div class="feature-desc">Proactive deadline tracking</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">Depends on mail timing</span></td>
+              <td><span class="cell-text cell-text--positive">Alerts before deadlines hit</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Medical Chronology</div>
+                <div class="feature-desc">Record analysis tools</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">CMS Integration</div>
+                <div class="feature-desc">Workflow automation</div>
+              </td>
+              <td><span class="cell-text cell-text--negative">Manual data entry</span></td>
+              <td><span class="cell-text cell-text--positive">Clio, Filevine, MyCase, Zapier</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__grid">
+        <div class="result-card">
+          <div class="result-card__number">67%</div>
+          <div class="result-card__label">Revenue Growth</div>
+          <div class="result-card__source">Ficek Law</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card__number">3x</div>
+          <div class="result-card__label">Caseload Growth</div>
+          <div class="result-card__source">The Disability Champions (900 to 3,000)</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card__number">5-6</div>
+          <div class="result-card__label">Hrs/Week Saved Per Paralegal</div>
+          <div class="result-card__source">Martin, Jones & Piemonte</div>
+        </div>
+      </div>
+      <div class="social-proof">
+        <div class="social-proof__item"><strong>4.9/5</strong> from 100+ firms</div>
+        <div class="social-proof__item"><strong>1,000+</strong> professionals</div>
+        <div class="social-proof__item"><strong>107K+</strong> cases</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE/AFTER -->
+  <section class="before-after">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Transformation</span>
+        <h2 class="section-title">Before & After: The Operational Shift</h2>
+      </div>
+
+      <div class="before-after__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851157/chronicle-content/comparison-ere-refactor/section-before-after-v1.png" alt="Before Chronicle vs After Chronicle operational comparison">
+      </div>
+
+      <div class="before-after__grid">
+        <div class="state-card state-card--before">
+          <div class="state-card__header">
+            <span class="state-card__badge">Before</span>
+            <span class="state-card__title">Manual ERE Access</span>
+          </div>
+          <ul class="state-list">
+            <li>Updates discovered when mail arrives (sometimes too late)</li>
+            <li>Clients call with news the firm should have caught first</li>
+            <li>Deadlines approached without advance warning</li>
+            <li>No audit trail of what was checked and when</li>
+            <li>15-20 hours/week per paralegal just checking ERE</li>
+          </ul>
+          <div class="state-quote">
+            <p class="state-quote__text">"We would receive calls from our clients telling us they'd been approved or denied. That doesn't look very good professionally."</p>
+            <p class="state-quote__author">William Viner, Viner Disability Law</p>
+          </div>
+        </div>
+
+        <div class="state-card state-card--after">
+          <div class="state-card__header">
+            <span class="state-card__badge">After</span>
+            <span class="state-card__title">Chronicle Automation</span>
+          </div>
+          <ul class="state-list">
+            <li>Know about SSA activity within hours of posting</li>
+            <li>Call clients before they call you</li>
+            <li>Deadlines visible with time to prepare</li>
+            <li>Complete visibility into what changed and when</li>
+            <li>Staff focused on client work, not portal refreshes</li>
+          </ul>
+          <div class="state-quote">
+            <p class="state-quote__text">"Chronicle is like having the most efficient paralegal in the world...It doesn't take a day off."</p>
+            <p class="state-quote__author">Jonathan Heeps, Martin, Jones & Piemonte</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Challenge</span>
+        <h2 class="section-title">Manual ERE Doesn't Scale</h2>
+      </div>
+
+      <div class="problem__content">
+        <p class="problem__text">The SSA's ERE portal is the source of truth for your cases. But checking it manually breaks down between 100-200 active cases:</p>
+
+        <div class="problem__pain-points">
+          <div class="pain-point">
+            <div class="pain-point__icon">&#128241;</div>
+            <div class="pain-point__title">2FA Friction</div>
+            <div class="pain-point__desc">Staff pass codes back and forth, interrupting whoever has the phone</div>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point__icon">&#128274;</div>
+            <div class="pain-point__title">Session Timeouts</div>
+            <div class="pain-point__desc">Portal times out. Credentials get locked. Restart from scratch.</div>
+          </div>
+          <div class="pain-point">
+            <div class="pain-point__icon">&#128231;</div>
+            <div class="pain-point__title">Late Updates</div>
+            <div class="pain-point__desc">By the time mail arrives, deadlines may already be tight</div>
+          </div>
+        </div>
+
+        <div class="problem__quote">
+          <p class="problem__quote-text">"Before Chronicle, we were constantly passing two-factor codes back and forth, getting kicked out of ERE, and struggling to keep track of updates."</p>
+          <p class="problem__quote-author">J. Shay Guess, SAM G Enterprises</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">How Chronicle ERE Monitoring Works</h2>
+      </div>
+
+      <div class="how-it-works__content">
+        <p class="how-it-works__text">Chronicle checks the SSA's ARS system daily for each monitored case. When changes happen, Chronicle surfaces them in your dashboard and routes alerts to your existing workflow.</p>
+
+        <div class="monitoring-features">
+          <div class="monitoring-feature">
+            <div class="monitoring-feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+            <div class="monitoring-feature__text">
+              <strong>New Documents</strong>
+              Notices, questionnaires, medical records
+            </div>
+          </div>
+          <div class="monitoring-feature">
+            <div class="monitoring-feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <div class="monitoring-feature__text">
+              <strong>Status Changes</strong>
+              Decisions, denials, approvals
+            </div>
+          </div>
+          <div class="monitoring-feature">
+            <div class="monitoring-feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="monitoring-feature__text">
+              <strong>Hearing Information</strong>
+              Dates, ALJ assignments, format changes
+            </div>
+          </div>
+          <div class="monitoring-feature">
+            <div class="monitoring-feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+            </div>
+            <div class="monitoring-feature__text">
+              <strong>Deadline Triggers</strong>
+              CE notices, appeals windows
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO SWITCH -->
+  <section class="switch">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Getting Started</span>
+        <h2 class="section-title">How to Switch to Chronicle</h2>
+        <p class="section-subtitle">Getting started is straightforward, no complex migration required.</p>
+      </div>
+
+      <div class="switch__image">
+        <img src="https://res.cloudinary.com/dbyg8koeu/image/upload/v1770851176/chronicle-content/comparison-ere-refactor/section-how-to-switch-v1.png" alt="Three-step onboarding: connect SSA credentials, import caseload, receive alerts">
+      </div>
+
+      <div class="switch__steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h4 class="step__title">Connect ERE Credentials</h4>
+          <p class="step__desc">Chronicle securely connects to the SSA's ARS system using your firm's existing representative credentials.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h4 class="step__title">Import Your Caseload</h4>
+          <p class="step__desc">Upload your active cases via CSV or connect your CMS. Chronicle begins monitoring immediately.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h4 class="step__title">Start Receiving Alerts</h4>
+          <p class="step__desc">Within 24 hours, you'll see your first dashboard updates. Most firms are fully onboarded within a week.</p>
+        </div>
+      </div>
+
+      <p class="switch__note"><strong>No disruption to current operations.</strong> Chronicle runs alongside whatever you're doing now. Phase out manual ERE checks as you get comfortable.</p>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security">
+    <div class="container">
+      <div class="security__grid">
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <span class="security__text">SOC 2 Type II Certified</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <span class="security__text">Encryption at Rest & Transit</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <span class="security__text">Role-Based Access Controls</span>
+        </div>
+        <div class="security__item">
+          <div class="security__icon">
+            <svg viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+          </div>
+          <span class="security__text">No Credential Sharing Required</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq-item">
+          <h3 class="faq-item__q">What does Chronicle monitor in the ERE?</h3>
+          <p class="faq-item__a">Chronicle monitors the SSA's ARS system daily for documents, status changes, hearing info, and deadline-triggering events.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">Do I still need to log into the ERE myself?</h3>
+          <p class="faq-item__a">For most daily operations, no. You may still log in for specific actions Chronicle doesn't cover.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">How quickly does Chronicle detect new documents?</h3>
+          <p class="faq-item__a">Daily checks. You'll typically see changes within 24 hours of SSA posting.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">Is my ERE data secure?</h3>
+          <p class="faq-item__a">Yes. Chronicle is SOC 2 certified with encryption at rest and in transit.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-item__q">What CMS systems does Chronicle integrate with?</h3>
+          <p class="faq-item__a">Clio, Filevine, MyCase, Zapier, and full API access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="demo">
+    <div class="container">
+      <div class="cta__content">
+        <h2 class="cta__title">Stop Checking the Portal Manually</h2>
+        <p class="cta__subtitle">See how automated ERE monitoring works for your caseload.</p>
+        <a href="#" class="cta__button">
+          Book a Demo
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="cta__links">
+          <a href="#" class="cta__link">SSD ERE Access Tools Compared</a>
+          <a href="#" class="cta__link">ERE Monitoring vs Case Management</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

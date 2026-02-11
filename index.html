@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronicle Page Designs</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0F172A;
+      color: #F8FAFC;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #74C0FC, #D0EBFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: #94A3B8;
+      margin-bottom: 2rem;
+    }
+    .pages {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    a {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: #F8FAFC;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    a:hover {
+      background: rgba(116, 192, 252, 0.1);
+      border-color: #74C0FC;
+      transform: translateY(-2px);
+    }
+    .page-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .page-desc {
+      font-size: 0.875rem;
+      color: #94A3B8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chronicle Page Designs</h1>
+    <p class="subtitle">Production-grade HTML for developer handoff</p>
+
+    <div class="pages">
+      <a href="about-page-final.html">
+        <div class="page-title">About Page</div>
+        <div class="page-desc">DM Serif Display + Instrument Sans | Platform stats, editorial layout</div>
+      </a>
+      <a href="comparison-atlasware-final.html">
+        <div class="page-title">Chronicle vs Atlasware</div>
+        <div class="page-desc">Fraunces + Manrope | Feature table, lifecycle coverage</div>
+      </a>
+      <a href="comparison-ere-final.html">
+        <div class="page-title">Chronicle vs Manual ERE</div>
+        <div class="page-desc">Playfair Display + Source Sans 3 | Before/after transformation</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
