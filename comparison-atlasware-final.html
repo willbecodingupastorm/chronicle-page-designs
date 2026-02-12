@@ -832,6 +832,25 @@
     .cta__link:hover {
       color: var(--chronicle-azure);
     }
+
+    /* Why Choose Grid Responsive */
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+      .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .why-choose-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -849,6 +868,35 @@
         Book a Demo
         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- WHY FIRMS CHOOSE CHRONICLE -->
+  <section style="padding: var(--space-lg) 0; background: var(--white);">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); text-align: center; margin-bottom: var(--space-md);">Why Firms Choose Chronicle Over Atlasware</h2>
+      <div class="why-choose-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md);">
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">📅</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Daily Monitoring</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Every case, every day—not just 3-5 scheduled pulls before hearings</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🔄</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Full Lifecycle</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Initial application through post-hearing, not just hearing prep windows</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🔌</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">CMS Flexibility</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Clio, Filevine, MyCase, Litify, Zapier—not locked to Prevail</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">👥</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Team Dashboard</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Firm-wide visibility with role-based access for your entire team</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -895,6 +943,38 @@
                 <div class="feature-desc">Brief Tool Pro vs AC Brief add-on</div>
               </td>
               <td><span class="icon-check">&#10003;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Team access</div>
+                <div class="feature-desc">Role-based access for your whole team</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Dashboard / Virtual mailroom</div>
+                <div class="feature-desc">Centralized firm-wide case visibility</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Realtime case status</div>
+                <div class="feature-desc">Live updates as SSA posts changes</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="feature-name">Hearing transcripts</div>
+                <div class="feature-desc">Access to hearing transcript documents</div>
+              </td>
+              <td><span class="icon-no">&mdash;</span></td>
               <td><span class="icon-check">&#10003;</span></td>
             </tr>
             <tr>
