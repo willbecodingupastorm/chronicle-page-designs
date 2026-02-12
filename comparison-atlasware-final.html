@@ -867,15 +867,15 @@
           <tbody>
             <tr>
               <td>
-                <div class="feature-name">ERE Monitoring</div>
-                <div class="feature-desc">How often cases are checked</div>
+                <div class="feature-name">Daily ERE monitoring</div>
+                <div class="feature-desc">Scheduled pre-hearing pulls vs daily automated checks</div>
               </td>
-              <td><span class="cell-value">Scheduled pulls (pre-hearing)</span></td>
-              <td><span class="cell-value">Daily automated checks</span></td>
+              <td><span class="icon-partial">~</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
             </tr>
             <tr>
               <td>
-                <div class="feature-name">Exhibit Packets</div>
+                <div class="feature-name">Exhibit packets</div>
                 <div class="feature-desc">Document preparation for hearings</div>
               </td>
               <td><span class="icon-check">&#10003;</span></td>
@@ -883,31 +883,23 @@
             </tr>
             <tr>
               <td>
-                <div class="feature-name">Medical Chronology</div>
+                <div class="feature-name">AI medical summaries</div>
                 <div class="feature-desc">AI-assisted record analysis</div>
               </td>
-              <td><span class="cell-value">AI summaries</span></td>
-              <td><span class="cell-value">AI timeline with citations</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
             </tr>
             <tr>
               <td>
-                <div class="feature-name">Hearing Briefs</div>
-                <div class="feature-desc">Brief writing tools</div>
+                <div class="feature-name">Hearing briefs</div>
+                <div class="feature-desc">Brief Tool Pro vs AC Brief add-on</div>
               </td>
-              <td><span class="cell-value">Brief Tool Pro</span></td>
-              <td><span class="cell-value">AC Brief add-on</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
             </tr>
             <tr>
               <td>
-                <div class="feature-name">CMS Integrations</div>
-                <div class="feature-desc">Supported platforms</div>
-              </td>
-              <td><span class="cell-value">Prevail, Litify only</span></td>
-              <td><span class="cell-value">Clio, Filevine, MyCase, Zapier</span></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="feature-name">API Automation</div>
+                <div class="feature-name">API automation</div>
                 <div class="feature-desc">Custom workflow access</div>
               </td>
               <td><span class="icon-no">&mdash;</span></td>
@@ -915,14 +907,67 @@
             </tr>
             <tr>
               <td>
-                <div class="feature-name">Lifecycle Coverage</div>
-                <div class="feature-desc">Stages monitored</div>
+                <div class="feature-name">Full lifecycle coverage</div>
+                <div class="feature-desc">Hearing-prep focused vs initial through post-hearing</div>
               </td>
-              <td><span class="cell-value">Hearing-prep focused</span></td>
-              <td><span class="cell-value">Initial through post-hearing</span></td>
+              <td><span class="icon-partial">~</span></td>
+              <td><span class="icon-check">&#10003;</span></td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- CMS Support Sub-table -->
+      <div style="margin-top: var(--space-lg);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--ink); text-align: center; margin-bottom: var(--space-md);">CMS Integrations</h3>
+        <div class="comparison__table-wrap" style="max-width: 600px; margin: 0 auto;">
+          <table class="comparison__table">
+            <thead>
+              <tr>
+                <th>CMS</th>
+                <th>Atlasware</th>
+                <th class="chronicle-header">Chronicle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="feature-name">Prevail</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">Litify</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">Clio</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">Filevine</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">MyCase</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">Zapier</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td><span class="feature-name">Full API</span></td>
+                <td><span class="icon-no">&mdash;</span></td>
+                <td><span class="icon-check">&#10003;</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -1030,7 +1075,7 @@
           <h3 class="decision-card__title">Choose Chronicle If:</h3>
           <ul class="decision-list">
             <li>You need full lifecycle monitoring (not just hearing prep)</li>
-            <li>You use Clio, Filevine, or MyCase</li>
+            <li>You use Clio, Filevine, MyCase, or Litify</li>
             <li>You want daily ERE visibility across all case stages</li>
             <li>You need API access or Zapier automation</li>
           </ul>
