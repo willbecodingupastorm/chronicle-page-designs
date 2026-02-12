@@ -7,7 +7,7 @@
   <title>Chronicle vs Manual ERE Access | Why Firms Are Switching</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       /* Chronicle Brand */
@@ -30,8 +30,8 @@
       --danger-soft: #FEE2E2;
 
       /* Typography */
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Manrope', system-ui, sans-serif;
 
       /* Spacing */
       --space-xs: 8px;
@@ -82,16 +82,24 @@
     .hero__badge {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-xs);
-      padding: 8px 16px;
-      background: var(--chronicle-sky);
+      gap: var(--space-sm);
+      padding: 10px 20px;
+      background: var(--white);
+      border: 1px solid var(--bone);
       border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--chronicle-deep);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
       margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero__badge-item {
+      color: var(--ink);
+    }
+
+    .hero__badge-vs {
+      color: var(--ink-muted);
+      font-size: 0.75rem;
+      font-weight: 400;
     }
 
     .hero__title {
@@ -932,19 +940,71 @@
     .cta__link:hover {
       color: var(--chronicle-azure);
     }
+
+    /* Why Choose Grid */
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+      .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .why-choose-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="hero__badge">Automation vs Manual</span>
+      <div class="hero__badge">
+        <span class="hero__badge-item">Chronicle</span>
+        <span class="hero__badge-vs">vs</span>
+        <span class="hero__badge-item">Manual ERE</span>
+      </div>
       <h1 class="hero__title">Chronicle vs Manual ERE Access: Why Firms Are Switching</h1>
       <p class="hero__subtitle">Daily document checks. Real-time status updates. Zero portal logins for your team.</p>
       <a href="#demo" class="hero__cta">
         Book a Demo
         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- WHY FIRMS CHOOSE CHRONICLE -->
+  <section style="padding: var(--space-lg) 0; background: var(--white);">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); text-align: center; margin-bottom: var(--space-md);">Why Firms Switch to Chronicle</h2>
+      <div class="why-choose-grid">
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">🚫</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Zero Portal Logins</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">No more 2FA friction or getting kicked out mid-session</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">📅</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Daily Monitoring</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Every case checked automatically—not when someone remembers</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">⏰</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Deadline Alerts</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Know about deadlines before mail arrives, not after</p>
+        </div>
+        <div style="background: var(--chronicle-sky); border-radius: var(--radius-md); padding: var(--space-md); text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: var(--space-xs);">👥</div>
+          <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: var(--space-xs);">Team Access</h3>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">Role-based logins for your whole team—no credential sharing</p>
+        </div>
+      </div>
     </div>
   </section>
 
